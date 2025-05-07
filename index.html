@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Do you want a cute cat or cute dog? which one is cuter to you?</h1>
+    <div id="container">
+        <button id="catBtn">A cute cat will make my day</button>
+        <div id="cat-image-container"></div>
+        <button id="dogBtn">A cute dog will make my day</button>
+        <div id="dog-image-container"></div>
+        <button id="wombatBtn">No, please give me other thing</button>
+        <div id="wombat-image-container"></div>
+    </div> 
+    <script>
+    //Pressing button, cat image appear
+    const catBtn = document.querySelector("#catBtn");
+    catBtn.addEventListener("click", () => {
+        const img = document.createElement("img");
+        img.src = "cat.png"
+
+        img.alt = "Cute cat image";
+        img.width = 300;
+
+    const container = document.getElementById("cat-image-container");
+    container.appendChild(img);
+    })
+
+    //Pressing button, dog image appear
+    const dogBtn = document.querySelector("#dogBtn");
+    dogBtn.addEventListener("click", () => {
+        const img = document.createElement("img");
+        img.src = "dog.png"
+
+        img.alt = "Cute dog image";
+        img.width = 600;
+
+    const container = document.getElementById("dog-image-container");
+    container.appendChild(img);
+    })
+
+    //Pressing button, wombat image appear
+    const wombatBtn = document.querySelector("#wombatBtn");
+    wombatBtn.addEventListener("click", () => {
+        const img = document.createElement("img");
+        img.src = "wombat.png"
+
+        img.alt = "Cute wombat image";
+        img.width = 600;
+
+    const container = document.getElementById("wombat-image-container");
+    container.appendChild(img);
+
+    const questionBox = document.createElement("input");
+    questionBox.type = "text";
+    questionBox.id = "myInput";
+
+    const labelElement = document.createElement('label');
+    labelElement.htmlFor = 'myInput'; // Associate label with input using 'for' attribute
+    labelElement.textContent = 'What is the name for this very cute animal? (Please enter lower case)';
+
+    const answerbtn = document.createElement('button');
+    const t = document.createTextNode("Submit answer");
+    answerbtn.appendChild(t);
+    answerbtn.id = "answerbtn";
+
+    document.body.appendChild(labelElement);
+    document.body.appendChild(questionBox);
+    document.body.appendChild(answerbtn);
+
+    answerbtn.addEventListener("click", getValue);
+
+    function getValue () {
+        const inputElement = document.getElementById("myInput");
+        if (inputElement.value !== "wombat") {
+            const wombatContainer = document.querySelector("#wombat-image-container");
+            const newText = document.createElement("p");
+            newText.textContent = "Please enter a correct answer."
+            wombatContainer.appendChild(newText);
+        } else if (inputElement.value === "wombat") {
+            const wombatContainer = document.querySelector("#wombat-image-container");
+            const newText = document.createElement("p");
+            newText.textContent = "Yes, the answer is correct!"
+            wombatContainer.appendChild(newText);  
+        }
+    }
+    })
+
+
+    </script>
+</body>
+</html>
